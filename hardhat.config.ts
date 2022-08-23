@@ -26,6 +26,11 @@ const config: HardhatUserConfig = {
     },
   },
 
+  zkSyncDeploy: {
+    zkSyncNetwork: "https://zksync2-testnet.zksync.dev",
+    ethNetwork: "goerli",
+  },
+
   networks: {
     zkSyncTest: {
       zksync: true,
