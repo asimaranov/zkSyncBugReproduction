@@ -1,5 +1,56 @@
 # zkSync bug reproduction
 
+## Factory bug
+
+Command to reproduce: `PRIVATE_KEY=xxx yarn hardhat deploy-zksync`
+
+Transaction is not failed, but there're no GreeterCreated event from createGreeter call.
+Expected: GreeterCreated exists at events from createGreeter 
+Actual events:
+```js
+[
+  {
+    transactionIndex: 0,
+    blockNumber: 1466,
+    transactionHash: '0x776e6d80e481018a2d598d1c74878ccbbd80aff223dfb0ba49da8ba0fb0c261c',
+    address: '0x000000000000000000000000000000000000800A',
+    topics: [
+      '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
+      '0x0000000000000000000000002836ec28c32e232280f984d3980ba4e05d6bf68f',
+      '0x0000000000000000000000000000000000000000000000000000000000008001'
+    ],
+    data: '0x000000000000000000000000000000000000000000000000000025f4e852fa00',
+    logIndex: 0,
+    blockHash: '0xb64b4e75fb4194432adef22f6085392be8b0aed1b9839d4309f2cab4efec265b',
+    removeListener: [Function (anonymous)],
+    getBlock: [Function (anonymous)],
+    getTransaction: [Function (anonymous)],
+    getTransactionReceipt: [Function (anonymous)]
+  },
+  {
+    transactionIndex: 0,
+    blockNumber: 1466,
+    transactionHash: '0x776e6d80e481018a2d598d1c74878ccbbd80aff223dfb0ba49da8ba0fb0c261c',
+    address: '0x000000000000000000000000000000000000800A',
+    topics: [
+      '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
+      '0x0000000000000000000000000000000000000000000000000000000000008001',
+      '0x00000000000000000000000077730c4042c109dff8d42bfec09901faef2618ef'
+    ],
+    data: '0x000000000000000000000000000000000000000000000000000025f4e852fa00',
+    logIndex: 1,
+    blockHash: '0xb64b4e75fb4194432adef22f6085392be8b0aed1b9839d4309f2cab4efec265b',
+    removeListener: [Function (anonymous)],
+    getBlock: [Function (anonymous)],
+    getTransaction: [Function (anonymous)],
+    getTransactionReceipt: [Function (anonymous)]
+  }
+]
+```
+
+The same code works for other eth networks
+
+## Previous bug (already fixed)
 This command: `PRIVATE_KEY=xxx yarn hardhat deploy-zksync`
 Produces the following error: 
 
