@@ -5,8 +5,11 @@
 Command to reproduce: `PRIVATE_KEY=xxx yarn hardhat deploy-zksync`
 
 Transaction is not failed, but there're no GreeterCreated event from createGreeter call.
+
 Expected: GreeterCreated exists at events from createGreeter 
+
 Actual events:
+
 ```js
 [
   {
