@@ -1,4 +1,4 @@
-# zkSync bug reproduction
+# zkSync bug reproduction by Raise Finance, https://raisefinance.io
 
 ## Factory bug
 
